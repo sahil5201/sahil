@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Button variant="outline-danger" className="mt-3">Submit</Button>
+      <Button variant="outline-success" className="mt-3">Submit</Button>
     </div>
   );
 }
