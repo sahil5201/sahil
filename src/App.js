@@ -26,7 +26,12 @@ function App() {
       <td>@twitter</td>
     </tr>
     <tr>
-      <td>1</td>
+      <td>2</td>
+      <td>Sahil5201</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <td>3</td>
       <td>Sahil5201</td>
       <td>@twitter</td>
     </tr>
