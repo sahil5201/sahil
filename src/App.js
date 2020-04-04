@@ -1,44 +1,26 @@
 import React from 'react';
-import {Button,Table} from 'react-bootstrap'
+
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
+
 import './App.css';
 
+import Head from './components/Head'
+import Sidebar from './components/Sidebar'
+import Mainarea from './components/Mainarea'
+
 function App() {
+ 
   return (
-    <div className="App">
-      <Table striped bordered hover variant="dark">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
-    </tr>
-  </thead>
-  <tbody>   
-    <tr>
-      <td>1</td>
-      <td>Sahil5201</td>
-      <td>@twitter</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Sahil5201</td>
-      <td>@twitter</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Sahil5201</td>
-      <td>@twitter</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Sahil5201</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</Table>
-      <Button variant="outline-success" className="mt-3">Submit</Button>
+    <Provider store={store}>
+    <div className="wrapper">
+        <Sidebar/>
+          <div className="main-panel">
+          <Head/>       
+          <Mainarea/>    
+        </div>
     </div>
+    </Provider>
   );
 }
 
