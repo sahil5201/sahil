@@ -16,7 +16,7 @@ function Head() {
      <nav className="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
   <div className="container-fluid">
     <div className="navbar-wrapper">
-      <a className="navbar-brand" onClick={()=>{}}>Dashboard</a>
+      <a className="navbar-brand" href="/">Dashboard</a>
     </div>
     <button className="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
       <span className="sr-only">Toggle navigation</span>
@@ -25,26 +25,9 @@ function Head() {
       <span className="navbar-toggler-icon icon-bar" />
     </button>
     <div className="collapse navbar-collapse justify-content-end">
-      <form className="navbar-form">
-        <div className="input-group no-border">
-          <input type="text" defaultValue className="form-control" placeholder="Search..." />
-          <button type="submit" className="btn btn-white btn-round btn-just-icon">
-            <i className="material-icons">search</i>
-            <div className="ripple-container" />
-          </button>
-        </div>
-      </form>
       <ul className="navbar-nav">
-        <li className="nav-item">
-          <a className="nav-link" onClick={()=>{}}>
-            <i className="material-icons">dashboard</i>
-            <p className="d-lg-none d-md-block">
-              Stats
-            </p>
-          </a>
-        </li>
         <li className="nav-item dropdown">
-          <a className="nav-link" onClick={()=>{}} id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a className="nav-link" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i className="material-icons">notifications</i>
             <span className="notification">5</span>
             <p className="d-lg-none d-md-block">
@@ -52,23 +35,23 @@ function Head() {
             </p>
           </a>
           <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <a className="dropdown-item" onClick={()=>{}}>Mike John responded to your email</a>
-            <a className="dropdown-item" onClick={()=>{}}>You have 5 new tasks</a>
-            <a className="dropdown-item" onClick={()=>{}}>You're now friend with Andrew</a>
-            <a className="dropdown-item" onClick={()=>{}}>Another Notification</a>
-            <a className="dropdown-item" onClick={()=>{}}>Another One</a>
+            <a className="dropdown-item" href="/">Mike John responded to your email</a>
+            <a className="dropdown-item" href="/">You have 5 new tasks</a>
+            <a className="dropdown-item" href="/">You're now friend with Andrew</a>
+            <a className="dropdown-item" href="/">Another Notification</a>
+            <a className="dropdown-item" href="/">Another One</a>
           </div>
         </li>
 
 
 
         <li className="nav-item dropdown">
-          <a className="nav-link" aria-expanded="false" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+          <button className="nav-link btn btn-link" aria-expanded="false" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
             <i className="material-icons">person</i>
             <p className="d-lg-none d-md-block">
               Account
             </p>
-          </a>
+          </button>
 
           <Menu
         id="simple-menu"

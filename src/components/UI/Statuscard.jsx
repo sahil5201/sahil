@@ -2,22 +2,28 @@ import React from 'react';
 
 function Statuscard(props) {
     console.log("",props)
+    const icon = props.icon ? props.icon : "content_copy";
+    const category = props.category ? props.category : "Card Category";
+    const title = props.title ? props.title : "Card Title";
+    const footerIcon = props.footer ? props.footer.icon : "";
+    const footerLink = props.footer ? props.footer.link : {loction:"",text:"for Link pass as prpos link={loction:' ',text:' '}"};
+    const color = props.color ? "card-header-"+props.color : "card-header-success";
   return (
     <div className="col-lg-3 col-md-6 col-sm-6">
       <div className="card card-stats">
-        <div className="card-header card-header-warning card-header-icon">
+        <div className={"card-header card-header-icon "+color}>
           <div className="card-icon">
-            <i className="material-icons">content_copy</i>
+            <i className="material-icons">{icon}</i>
           </div>
-          <p className="card-category">Used Space</p>
+          <p className="card-category">{category}</p>
           <h3 className="card-title">
-            49/50<small>GB</small>
+            {title}
           </h3>
         </div>
         <div className="card-footer">
           <div className="stats">
-            <i className="material-icons text-danger">warning</i>
-            <a href="./">Get More Space...</a>
+            { footerIcon ? <i className="material-icons text-primary">{footerIcon}</i> : "" }
+            { footerLink ?  <a href={footerLink.loction} className={footerLink.loction?"":"disabled"}>{footerLink.text}</a> : ""}
           </div>
         </div>
       </div>
