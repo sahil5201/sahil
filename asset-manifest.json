@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/sahil/static/css/main.7fa71134.chunk.css",
-    "main.js": "/sahil/static/js/main.370d1ad4.chunk.js",
-    "main.js.map": "/sahil/static/js/main.370d1ad4.chunk.js.map",
+    "main.js": "/sahil/static/js/main.f5c2036a.chunk.js",
+    "main.js.map": "/sahil/static/js/main.f5c2036a.chunk.js.map",
     "runtime-main.js": "/sahil/static/js/runtime-main.2c8ee853.js",
     "runtime-main.js.map": "/sahil/static/js/runtime-main.2c8ee853.js.map",
     "static/css/2.fab18f34.chunk.css": "/sahil/static/css/2.fab18f34.chunk.css",
-    "static/js/2.c3267375.chunk.js": "/sahil/static/js/2.c3267375.chunk.js",
-    "static/js/2.c3267375.chunk.js.map": "/sahil/static/js/2.c3267375.chunk.js.map",
+    "static/js/2.3af2dc55.chunk.js": "/sahil/static/js/2.3af2dc55.chunk.js",
+    "static/js/2.3af2dc55.chunk.js.map": "/sahil/static/js/2.3af2dc55.chunk.js.map",
     "index.html": "/sahil/index.html",
-    "precache-manifest.f3aeb31ddef5305b66d6d39294f63832.js": "/sahil/precache-manifest.f3aeb31ddef5305b66d6d39294f63832.js",
+    "precache-manifest.0315c1ea86ebf730678e442e53a249bb.js": "/sahil/precache-manifest.0315c1ea86ebf730678e442e53a249bb.js",
     "service-worker.js": "/sahil/service-worker.js",
     "static/css/2.fab18f34.chunk.css.map": "/sahil/static/css/2.fab18f34.chunk.css.map",
     "static/css/main.7fa71134.chunk.css.map": "/sahil/static/css/main.7fa71134.chunk.css.map",
-    "static/js/2.c3267375.chunk.js.LICENSE.txt": "/sahil/static/js/2.c3267375.chunk.js.LICENSE.txt"
+    "static/js/2.3af2dc55.chunk.js.LICENSE.txt": "/sahil/static/js/2.3af2dc55.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2c8ee853.js",
     "static/css/2.fab18f34.chunk.css",
-    "static/js/2.c3267375.chunk.js",
+    "static/js/2.3af2dc55.chunk.js",
     "static/css/main.7fa71134.chunk.css",
-    "static/js/main.370d1ad4.chunk.js"
+    "static/js/main.f5c2036a.chunk.js"
   ]
 }
