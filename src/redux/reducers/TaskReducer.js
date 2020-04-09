@@ -1,3 +1,4 @@
+
 const defaultState = {
     name : "Sahil",
     count: 1,
@@ -8,33 +9,35 @@ const defaultState = {
         "status": true,
         "id": "1001T",
         "user":"ABC"
-      },{
-          "task": "ABC Need To be Done By end of the Day",
-          "priority":"HIGH",
-          "status": false,
-          "id": "1001T",
-          "user":"ABC"
       }]
 }
 
 const TaskReducer = (state=defaultState,action) => {
-    switch(action.type){
-        case "INSERT" : return {
-            ...state,
-            name : "ABC",
-            count: state.count+1
-        }
-        case "DELETE" : return {
-            ...state,
-            name : "SAHIL",
-            count: state.count-1
-        }
-        case "Check" : 
-            return {
-            ...state,
-            status : state.status ? false : true
-            }
-        default: return state
+    switch (action.type) {
+      case "INSERT":
+        return {
+          ...state,
+          name: "ABC",
+          count: state.count + 1,
+        };
+      case "DELETE":
+        return {
+          ...state,
+          name: "SAHIL",
+          count: state.count - 1,
+        };
+      case "Check":
+        return {
+          ...state,
+          status: state.status ? false : true,
+        };
+      case "GET":
+        return {
+          ...state,
+          task: action.payload
+        };
+      default:
+        return state;
     }
 }
 

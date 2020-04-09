@@ -3,8 +3,6 @@ import Statuscard from "../UI/Statuscard";
 
 function Dashboard() {
   return (
-    <div className="content">
-      <div className="container-fluid">
         <div className="row">
           <Statuscard
             icon = "home"
@@ -29,8 +27,6 @@ function Dashboard() {
           />
           <Statuscard />
         </div>
-      </div>
-    </div>
   );
 }
 

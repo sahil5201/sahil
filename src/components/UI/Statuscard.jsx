@@ -1,13 +1,13 @@
 import React from 'react';
 
 function Statuscard(props) {
-    console.log("",props)
     const icon = props.icon ? props.icon : "content_copy";
     const category = props.category ? props.category : "Card Category";
     const title = props.title ? props.title : "Card Title";
     const footerIcon = props.footer ? props.footer.icon : "";
     const footerLink = props.footer ? props.footer.link : {loction:"",text:"for Link pass as prpos link={loction:' ',text:' '}"};
     const color = props.color ? "card-header-"+props.color : "card-header-success";
+
   return (
     <div className="col-lg-3 col-md-6 col-sm-6">
       <div className="card card-stats">

@@ -1,14 +1,15 @@
-import React from 'react'
+import React from "react";
 
-
-import Mainarea from "../Mainarea";
+import { useSelector } from "react-redux";
+import Table from "../UI/Table";
 
 function TodayTask() {
-    return (
-       
-          <Mainarea />
-       
-    )
+  const task = useSelector((state) => state.task);
+  return (
+    <div className="row">
+      <Table lg="10" Data={task} currentDate={true} />
+    </div>
+  );
 }
 
-export default TodayTask
+export default TodayTask;

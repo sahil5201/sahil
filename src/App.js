@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route,Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 import { Provider } from 'react-redux';
@@ -13,6 +13,7 @@ import Dashboard from "./components/Page/Dashboard";
 import TodayTask from './components/Page/TodayTask';
 import ImportantTask from './components/Page/ImportantTask';
 import ScheduleTask from './components/Page/ScheduleTask';
+import ErrorPage from './components/Page/ErrorPage';
 
 function App() {
   const customHistory = createBrowserHistory(); 
@@ -20,15 +21,22 @@ function App() {
   return (
     <Provider store={store}>
       <div className="wrapper">
-        <Sidebar activeLink={link}/>
+        <Sidebar activeLink={link} />
         <div className="main-panel">
           <Head />
-          <BrowserRouter history={customHistory}>
-            <Route exact path="/" component={Dashboard} />
-            <Route exact path="/latest" component={TodayTask} />
-            <Route exact path="/important" component={ImportantTask} />
-            <Route exact path="/planned" component={ScheduleTask} />
-          </BrowserRouter>
+          <div className="content">
+            <div className="container-fluid">
+              <BrowserRouter history={customHistory}>
+                <Switch>
+                  <Route exact path="/" component={Dashboard} />
+                  <Route exact path="/latest" component={TodayTask} />
+                  <Route exact path="/important" component={ImportantTask} />
+                  <Route exact path="/planned" component={ScheduleTask} />
+                  <Route component={ErrorPage} />
+                </Switch>
+              </BrowserRouter>
+            </div>
+          </div>
         </div>
       </div>
     </Provider>
