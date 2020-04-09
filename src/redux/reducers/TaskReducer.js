@@ -3,13 +3,7 @@ const defaultState = {
     name : "Sahil",
     count: 1,
     status : true,
-    task:[{
-        "task": "ABC Need To be Done By end of the Day",
-        "priority":"HIGH",
-        "status": true,
-        "id": "1001T",
-        "user":"ABC"
-      }]
+    task: null
 }
 
 const TaskReducer = (state=defaultState,action) => {
