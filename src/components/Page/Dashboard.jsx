@@ -14,7 +14,7 @@ function Dashboard() {
           <Statuscard
             icon = "today"
             color = "primary"
-            footer ={{ link: { loction: "/today", text: "Today's Task" }, icon: "today" }}
+            footer ={{ link: { loction: "/latest", text: "Today's Task" }, icon: "today" }}
             category ="Today's Task"
             title = "5"
           />

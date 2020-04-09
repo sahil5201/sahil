@@ -2,7 +2,7 @@ import Axios from 'axios';
 
 export const fetchData = () => {
     return (useDispatch) => {
-        Axios.get("http://localhost:4400/task").then(response=>{
+        Axios.get("http://192.168.1.104:4400/task").then(response=>{
             useDispatch(GET(response.data))
         })
     }

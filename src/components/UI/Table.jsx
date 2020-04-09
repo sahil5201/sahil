@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Checkbox, TextField, CircularProgress, Paper } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { insert, Check, fetchData } from "../../redux/action/TaskAction";
+import { Check, fetchData } from "../../redux/action/TaskAction";
 import Moment from "moment";
 import CustomModal from "./CustomModal";
 
