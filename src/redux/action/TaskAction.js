@@ -9,13 +9,17 @@ export const fetchData = (path="task") => {
     }
 }
 
-export const insertData = (path="task",PostData) => {
+export const insertData = (path="task",PostData,DataPath="task") => {
     return (useDispatch) => {
         console.log(PostData);
         Axios.post(API_URL+path,PostData)
           .then(function (response) {
             console.log(response);
-           useDispatch(fetchData)
+            if(!response.data.error){
+              setTimeout(() => {
+                useDispatch(fetchData(DataPath))  
+              }, 200);                
+            }    
           })
           .catch(function (error) {
             console.log(error);

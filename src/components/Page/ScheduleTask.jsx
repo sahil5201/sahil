@@ -22,8 +22,8 @@ function ScheduleTask() {
             id: item.id,
             title: item.task.Task,
             color: item.task.color ? item.task.color : "",
-            start: new Date(moment(item.task.startDate).format("YYYY, M , D  HH:MM")),
-            end: new Date(new Date(item.task.endDate).setHours(new Date(item.task.endDate).getHours()+8)),
+            start: new Date(item.task.startDate),
+            end: new Date(item.task.endDate),
         }) 
     })) : "";
 

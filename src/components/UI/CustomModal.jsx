@@ -23,8 +23,7 @@ export default function CustomModal(props) {
     const TaskData = {
       Task:Task,
     }
-    dispatch(insertData("task/addtask",TaskData));
-    dispatch(fetchData());
+    dispatch(insertData("task/addtask",TaskData));    
   }
   return (
     <Modal
@@ -67,6 +66,12 @@ export function ScheduleModal(props) {
     setEndDate(date);
   }
 
+  const colorList = ["#64b5f6","#d1c4e9","#26c6da","#80cbc4","#ff8a65","#f48fb1"]
+
+  const oncolorSelect=(event)=>{
+    setmemoColor(event.target.name)
+  }
+
   const onFormSubmit=()=>{
     console.log(Task,StartDate,EndDate);
     const TaskData = {
@@ -75,7 +80,7 @@ export function ScheduleModal(props) {
       endDate:EndDate,
       color:memoColor
     }
-    dispatch(insertData("Schedule/addtask",TaskData));
+    dispatch(insertData("Schedule/addtask",TaskData,"Schedule"));
  } 
 
   return (
@@ -146,6 +151,22 @@ export function ScheduleModal(props) {
           }}
         />
           </div>
+
+ <div className="container">			
+  <div className="well well-sm text-center">
+    <div className="btn-group colorPicker" data-toggle="buttons">
+     { 
+     colorList.map((item) => { 
+        return (
+        <label className={ memoColor===item ? "btn active" : "btn" } style={{backgroundColor:item }}>
+        <input type="radio" name={item} id="option2" autoComplete="off" onClick={oncolorSelect}/>
+        <span className="material-icons">check</span>
+      </label>
+      )
+        })}
+    </div>
+  </div>
+</div>
 
         </div>
     </Modal.Body>

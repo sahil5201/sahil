@@ -14,14 +14,16 @@ import TodayTask from './components/Page/TodayTask';
 import ImportantTask from './components/Page/ImportantTask';
 import ScheduleTask from './components/Page/ScheduleTask';
 import ErrorPage from './components/Page/ErrorPage';
+import LoginPage from './components/Page/LoginPage';
 
 function App() {
   const customHistory = createBrowserHistory(); 
   const link = window.location.pathname
   return (
     <Provider store={store}>
+      {link!=="/login" ? 
       <div className="wrapper">
-        <Sidebar activeLink={link} />
+        <Sidebar activeLink={link} /> {link}
         <div className="main-panel">
           <Head />
           <div className="content">
@@ -39,6 +41,9 @@ function App() {
           </div>
         </div>
       </div>
+    : 
+      <LoginPage/>
+    }
     </Provider>
   );
 }
