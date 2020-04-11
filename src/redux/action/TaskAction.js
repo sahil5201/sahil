@@ -1,10 +1,25 @@
 import Axios from 'axios';
+import { API_URL } from '../const';
 
-export const fetchData = () => {
+export const fetchData = (path="task") => {
     return (useDispatch) => {
-        Axios.get("http://192.168.1.104:4400/task").then(response=>{
+        Axios.get(API_URL+path).then(response=>{
             useDispatch(GET(response.data))
         })
+    }
+}
+
+export const insertData = (path="task",PostData) => {
+    return (useDispatch) => {
+        console.log(PostData);
+        Axios.post(API_URL+path,PostData)
+          .then(function (response) {
+            console.log(response);
+           useDispatch(fetchData)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 }
 
