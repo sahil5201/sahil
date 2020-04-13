@@ -23,24 +23,24 @@ function App() {
     <Provider store={store}>
       {link!=="/login" ? 
       <div className="wrapper">
-        <Sidebar activeLink={link} /> {link}
-        <div className="main-panel">
-          <Head />
-          <div className="content">
-            <div className="container-fluid">
-              <BrowserRouter history={customHistory}>
-                <Switch>
-                  <Route exact path="/" component={Dashboard} />
-                  <Route exact path="/latest" component={TodayTask} />
-                  <Route exact path="/important" component={ImportantTask} />
-                  <Route exact path="/planned" component={ScheduleTask} />
-                  <Route component={ErrorPage} />
-                </Switch>
-              </BrowserRouter>
-            </div>
+      <Sidebar activeLink={link} />
+      <div className="main-panel">
+        <Head />
+        <div className="content">
+          <div className="container-fluid">
+            <BrowserRouter history={customHistory}>
+              <Switch>
+                <Route exact path="/" component={Dashboard} />
+                <Route exact path="/latest" component={TodayTask} />
+                <Route exact path="/important" component={ImportantTask} />
+                <Route exact path="/planned" component={ScheduleTask} />
+                <Route component={ErrorPage} />
+              </Switch>
+            </BrowserRouter>
           </div>
         </div>
       </div>
+    </div>
     : 
       <LoginPage/>
     }
