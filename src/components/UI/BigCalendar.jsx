@@ -17,7 +17,6 @@ function BigCalendar(props) {
       return {
         style : {
             backgroundColor: event.color,
-            borderRadius: '0px',
             opacity: 0.8,
             color: 'black',
             border: '0px',
