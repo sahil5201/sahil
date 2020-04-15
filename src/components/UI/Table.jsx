@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Checkbox,CircularProgress } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { Check, fetchData } from "../../redux/action/TaskAction";
+import { Check, fetchData } from "../../redux/action";
 import Moment from "moment";
 import CustomModal from "./CustomModal";
 
@@ -107,7 +107,7 @@ function Table(props) {
                           <CircularProgress />
                         </td>
                       </tr>
-                    )}
+                    ) }
                   </tbody>
                 </table>
               </div>

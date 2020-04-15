@@ -1,6 +1,6 @@
 import React from "react";
 import { createBrowserHistory } from "history";
-import { BrowserRouter, Route,Switch } from "react-router-dom";
+import { BrowserRouter,Switch, Route, Redirect, useHistory } from "react-router-dom";
 import Head from "./Head";
 import Sidebar from "./Sidebar";
 
@@ -10,6 +10,7 @@ import ImportantTask from './Page/ImportantTask';
 import ScheduleTask from './Page/ScheduleTask';
 import ErrorPage from './Page/ErrorPage';
 import { useSelector } from "react-redux";
+import LoginPage from "./Page/LoginPage";
 
 function Mainarea() {
   const customHistory = createBrowserHistory(); 
@@ -17,14 +18,16 @@ function Mainarea() {
   const user = useSelector((state)=>state.User);
 
   console.log(user);
+  
   return (
+    <BrowserRouter history={customHistory}>
     <div className="wrapper">
       <Sidebar activeLink={link} />
       <div className="main-panel">
         <Head />
         <div className="content">
           <div className="container-fluid">
-            <BrowserRouter history={customHistory}>
+           
               <Switch>
                 <Route exact path="/" component={Dashboard} />
                 <Route exact path="/latest" component={TodayTask} />
@@ -32,11 +35,11 @@ function Mainarea() {
                 <Route exact path="/planned" component={ScheduleTask} />
                 <Route component={ErrorPage} />
               </Switch>
-            </BrowserRouter>
           </div>
         </div>
       </div>
     </div>
+    </BrowserRouter>
   );
 }
 

@@ -17,7 +17,7 @@ function LoginPage() {
 
   const logout = () =>{
     console.log("logout");
-    dispatch(Logout)
+    dispatch(Logout())
   }
     return (
       <div className="Login-container">

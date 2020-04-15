@@ -1,5 +1,5 @@
 import React from 'react';
-import {Menu,MenuItem} from '@material-ui/core';
+import {Menu,MenuItem, Avatar} from '@material-ui/core';
 
 function Head() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -11,6 +11,8 @@ function Head() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const user = window.sessionStorage.getItem("user") ? JSON.parse(window.sessionStorage.getItem("user")) : "";
   return (
    
      <nav className="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
@@ -47,7 +49,7 @@ function Head() {
 
         <li className="nav-item dropdown">
           <button className="nav-link btn btn-link" aria-expanded="false" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-            <i className="material-icons">person</i>
+          {user? <div><Avatar alt="Remy Sharp" src={user.imageUrl} /> </div> : <i className="material-icons">person</i> }  
             <p className="d-lg-none d-md-block">
               Account
             </p>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Statuscard(props) {
     const icon = props.icon ? props.icon : "content_copy";
@@ -23,7 +24,7 @@ function Statuscard(props) {
         <div className="card-footer">
           <div className="stats">
             { footerIcon ? <i className="material-icons text-primary">{footerIcon}</i> : "" }
-            { footerLink ?  <a href={footerLink.loction} className={footerLink.loction?"":"disabled"}>{footerLink.text}</a> : ""}
+            { footerLink ?  <Link to={footerLink.loction} className={footerLink.loction?"":"disabled"}>{footerLink.text}</Link> : ""}
           </div>
         </div>
       </div>

@@ -129,7 +129,7 @@ export function ScheduleModal(props) {
           <div className="col-md-6 col-sm-6">
             <KeyboardDatePicker
           margin="normal"
-          id="date-picker-dialog"
+          id="date-picker-dialog1"
           label="Ending Date"
           format="dd/MM/yyyy"
           value={EndDate}
@@ -142,7 +142,7 @@ export function ScheduleModal(props) {
           <div className="col-md-6 col-sm-6">
           <KeyboardTimePicker
           margin="normal"
-          id="time-picker"
+          id="time-picker1"
           label="Ending Time"
           value={EndDate}
           onChange={handleENDDateChange}
@@ -158,8 +158,8 @@ export function ScheduleModal(props) {
      { 
      colorList.map((item) => { 
         return (
-        <label className={ memoColor===item ? "btn active" : "btn" } style={{backgroundColor:item }}>
-        <input type="radio" name={item} id="option2" autoComplete="off" onClick={oncolorSelect}/>
+        <label className={ memoColor===item ? "btn active" : "btn" } id={item} style={{ backgroundColor:item }}>
+        <input type="radio" name={item} autoComplete="off" id={item} onClick={oncolorSelect}/>
         <span className="material-icons">check</span>
       </label>
       )
