@@ -1,4 +1,3 @@
-import React from 'react'
 import { store } from 'react-notifications-component';
 
 export const notify = (option={}) => { store.addNotification({
