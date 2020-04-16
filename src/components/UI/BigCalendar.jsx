@@ -49,7 +49,7 @@ function BigCalendar(props) {
         </div>
       </div>
       <div className="card-body">
-      <EventPopup show={PopupShow} onHide={() => setPopupShow(false)} Data={PopupData} />
+      <EventPopup show={PopupShow} onHide={() => setPopupShow(false)} data={PopupData} />
         {props.events ? (
           <Calendar
             localizer={localizer}

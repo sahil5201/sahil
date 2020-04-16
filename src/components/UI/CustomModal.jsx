@@ -8,7 +8,8 @@ import {
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import { useDispatch } from "react-redux";
-import { insertData } from "../../redux/action/TaskAction";
+import { insertData, deleteData } from "../../redux/action/TaskAction";
+import Moment from "moment";
 
 
 export default function CustomModal(props) {
@@ -23,7 +24,8 @@ export default function CustomModal(props) {
     const TaskData = {
       Task:Task,
     }
-    dispatch(insertData("task/addtask",TaskData));    
+    dispatch(insertData("task/addtask",TaskData));
+    props.onHide()    
   }
   return (
     <Modal
@@ -81,6 +83,7 @@ export function ScheduleModal(props) {
       color:memoColor
     }
     dispatch(insertData("Schedule/addtask",TaskData,"Schedule"));
+    props.onHide()
  } 
 
   return (
@@ -180,6 +183,17 @@ export function ScheduleModal(props) {
 }
 
 export function EventPopup(props){
+  const dispatch = useDispatch()
+  const StartTaskDate =  props.data ? Moment(props.data.start).format("DD-MM-YYYY") : "";
+  const StartTaskTime =  props.data ? Moment(props.data.start).format("hh:mm A") : "";
+  const EndTaskDate =  props.data ? Moment(props.data.end).format("DD-MM-YYYY") : "";
+  const EndTaskTime =  props.data ? Moment(props.data.end).format("hh:mm A") : "";
+
+  const onDelete = () =>{
+    const DataId={"id":props.data.id}
+    dispatch(deleteData('Schedule/deletetask',DataId,'Schedule'))
+    props.onHide()
+  }
     return (
       <Modal
         {...props}
@@ -193,12 +207,26 @@ export function EventPopup(props){
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div>
-          {props.Data.title}
-          {/* {new Date(props.Data.startDate)} */}
-          </div>
+        { props.data ? 
+         <div className="row">
+         <div className="col-md-12"> <h3> {props.data.title} </h3> </div>
+         <hr/>
+         <div className="col-md-6"> Start Time : </div>
+         <div className="col-md-3"> {StartTaskDate} </div>
+         <div className="col-md-3"> {StartTaskTime} </div>
+
+         <div className="col-md-6"> End Time : </div>
+         <div className="col-md-3"> {EndTaskDate} </div>
+         <div className="col-md-3"> {EndTaskTime} </div>
+
+         </div>
+         : " " }
         </Modal.Body>
-  
+        <Modal.Footer>
+        <Button variant="success" onClick={()=>{}}>Complete</Button>
+        <Button variant="outline-danger" onClick={onDelete}>Delete</Button>
+        <Button variant="outline-info" onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
       </Modal>
     );
 }

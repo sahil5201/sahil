@@ -10,7 +10,7 @@ function ScheduleTask() {
 
   useEffect(() => {
     dispatch(fetchData("Schedule"));
-  }, []);
+    }, []);
 
   const myEventsList = task ? [ ] : null ;
   

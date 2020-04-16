@@ -40,9 +40,9 @@ function Sidebar(props) {
           <p>planned</p>
         </Link>
       </li>
-      {user?
+      {user.imageUrl ?
       <li className="nav-item active-pro">
-        <Link className="nav-link" to="/planned">
+        <Link className="nav-link" to="/profile">
          <i className="material-icons"><Avatar alt="Remy Sharp" src={user.imageUrl} style={{ height:"30px",width:"30px" }}/></i>
           <p>{user.name}</p>  
         </Link>

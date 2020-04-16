@@ -49,7 +49,7 @@ function Head() {
 
         <li className="nav-item dropdown">
           <button className="nav-link btn btn-link" aria-expanded="false" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-          {user? <div><Avatar alt="Remy Sharp" src={user.imageUrl} /> </div> : <i className="material-icons">person</i> }  
+          {user.imageUrl ? <div><Avatar alt="Remy Sharp" src={user.imageUrl} /> </div> : <i className="material-icons">person</i> }  
             <p className="d-lg-none d-md-block">
               Account
             </p>

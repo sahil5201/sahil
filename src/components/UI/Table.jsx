@@ -4,20 +4,25 @@ import { useDispatch } from "react-redux";
 import { Check, fetchData } from "../../redux/action";
 import Moment from "moment";
 import CustomModal from "./CustomModal";
+import { DeletePopup } from "./DeletePopup";
 
 function Table(props) {
   const lg = "col-lg-" + props.lg;
   const data = props.Data;
   const dispatch = useDispatch();
   const currentDate = props.currentDate ? true : false;
+  const [modalShow, setModalShow] = React.useState(false);
+  const [deletePopup, setDeletePopup] = React.useState(false);
+  const [itemdata, setData] = React.useState(null);
+
   useEffect(() => {
     dispatch(fetchData());
   }, []);
 
-  const [modalShow, setModalShow] = React.useState(false);
   return (
     <div className="row justify-content-lg-center col-lg-12">
       <CustomModal show={modalShow} onHide={() => setModalShow(false)} />
+      <DeletePopup show={deletePopup} data={itemdata} onHide={()=> setDeletePopup(false)} />
 
       <div className={lg}>
         <div className="card">
@@ -57,7 +62,7 @@ function Table(props) {
                             "DD-MM-YYYY"
                           );
                           const TaskTime = Moment(item.task.Date).format(
-                            "hh:mm"
+                            "hh:mm A"
                           );
                           return (
                             <tr key={item.id}>
@@ -89,10 +94,7 @@ function Table(props) {
                                   rel="tooltip"
                                   title="Remove"
                                   className="btn btn-danger btn-link btn-sm"
-                                  onClick={() => {
-                                    alert("DELETE", item.id);
-                                    console.log(item);
-                                  }}
+                                  onClick={()=>{setDeletePopup(true);setData(item)}}
                                 >
                                   <i className="material-icons">close</i>
                                 </button>
@@ -108,6 +110,7 @@ function Table(props) {
                         </td>
                       </tr>
                     ) }
+                     
                   </tbody>
                 </table>
               </div>
