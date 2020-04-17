@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Checkbox,CircularProgress } from "@material-ui/core";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Check, fetchData } from "../../redux/action";
 import Moment from "moment";
 import CustomModal from "./CustomModal";
@@ -14,9 +14,10 @@ function Table(props) {
   const [modalShow, setModalShow] = React.useState(false);
   const [deletePopup, setDeletePopup] = React.useState(false);
   const [itemdata, setData] = React.useState(null);
-
+  const user = useSelector((state) => state.User.user);
+  const id = { id: user ? user.googleId : null }
   useEffect(() => {
-    dispatch(fetchData());
+    dispatch(fetchData("task/byid/",id));
   }, []);
 
   return (

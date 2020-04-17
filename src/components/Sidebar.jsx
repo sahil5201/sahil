@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Avatar } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 
 
 function Sidebar(props) {
   const link = props.activeLink
-  const user = window.sessionStorage.getItem("user") ? JSON.parse(window.sessionStorage.getItem("user")) : "";
+  const user = useSelector((state) => state.User.user);
 
   return (
   <div className="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
@@ -40,7 +41,7 @@ function Sidebar(props) {
           <p>planned</p>
         </Link>
       </li>
-      {user.imageUrl ?
+      {user ?
       <li className="nav-item active-pro">
         <Link className="nav-link" to="/profile">
          <i className="material-icons"><Avatar alt="Remy Sharp" src={user.imageUrl} style={{ height:"30px",width:"30px" }}/></i>

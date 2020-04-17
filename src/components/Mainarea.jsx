@@ -1,5 +1,5 @@
-import React from "react";
-import {Switch, Route,HashRouter, withRouter } from "react-router-dom";
+import React, { useEffect } from "react";
+import {Switch, Route,HashRouter as Router, withRouter } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import Head from "./Head";
 import Sidebar from "./Sidebar";
@@ -10,13 +10,19 @@ import ImportantTask from './Page/ImportantTask';
 import ScheduleTask from './Page/ScheduleTask';
 import ErrorPage from './Page/ErrorPage';
 import ProfilePage from "./Page/ProfilePage";
+import { user_authentication } from "../redux/action";
+import { useDispatch } from "react-redux";
 
 function Mainarea(props) {
+   const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(user_authentication())
+  }, [])
   const link = window.location.pathname
   const customHistory = createBrowserHistory();
-  const login = window.sessionStorage.getItem('user') ? window.sessionStorage.getItem('user') : null ;
+  const login = window.sessionStorage.getItem('user') ? true : false ;
   return (
-    <HashRouter history={customHistory}>
+    <Router history={customHistory}>
     <div className="wrapper">
       <Sidebar activeLink={link} />
       <div className="main-panel">
@@ -34,14 +40,17 @@ function Mainarea(props) {
                 <Route path="*" component={ErrorPage} /> 
               </Switch> 
                 : 
-                <Route exact path ="/" render={()=>{ props.history.push("/login"); }}></Route>
+                <Switch>
+                <Route exact path ="/" > { props.history.push("/login")} </Route>
+                <Route exact path ="*" > { props.history.push("/login")} </Route>
+                </Switch>
             }              
           
           </div>
         </div>
       </div>
     </div>
-    </HashRouter>
+    </Router>
   );
 }
 

@@ -5,6 +5,12 @@ export const Login = data => {
     }
 }
 
+export const user_authentication = () => {
+    return {
+        type: 'GET',
+    }
+}
+
 export const Logout = () => {
     return {
         type: 'Logout',

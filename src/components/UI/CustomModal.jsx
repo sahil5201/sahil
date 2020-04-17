@@ -7,13 +7,14 @@ import {
 
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { insertData, deleteData } from "../../redux/action/TaskAction";
 import Moment from "moment";
 
 
 export default function CustomModal(props) {
   const [Task, setTask] = useState("initialState")
+  const user = useSelector((state) => state.User.user);
   const dispatch = useDispatch();
 
  const onFormChange=(event)=>{
@@ -23,7 +24,9 @@ export default function CustomModal(props) {
   const onFormSubmit=()=>{
     const TaskData = {
       Task:Task,
+      userID: user.googleId
     }
+    console.log(user,TaskData);
     dispatch(insertData("task/addtask",TaskData));
     props.onHide()    
   }
@@ -55,6 +58,7 @@ export function ScheduleModal(props) {
   const [StartDate, setStartDate] = React.useState(new Date());
   const [EndDate, setEndDate] = React.useState(new Date());
   const [memoColor, setmemoColor] = React.useState("");
+  const user = useSelector((state) => state.User.user);
   const dispatch = useDispatch();
 
  const onFormChange=(event)=>{
@@ -80,7 +84,8 @@ export function ScheduleModal(props) {
       Task:Task,
       startDate:StartDate,
       endDate:EndDate,
-      color:memoColor
+      color:memoColor,
+      userID: user.googleId
     }
     dispatch(insertData("Schedule/addtask",TaskData,"Schedule"));
     props.onHide()

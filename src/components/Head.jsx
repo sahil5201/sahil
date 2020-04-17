@@ -2,11 +2,12 @@ import React from 'react';
 import {Menu,MenuItem, Avatar} from '@material-ui/core';
 import { GoogleLogout } from 'react-google-login';
 import { PUB_Key } from '../redux/const';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Logout } from '../redux/action';
 import { withRouter } from 'react-router';
 
 function Head(props) {
+  const user = useSelector((state) => state.User.user);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const dispatch = useDispatch();
   const handleClick = (event) => {
@@ -17,13 +18,11 @@ function Head(props) {
     setAnchorEl(null);
   };
 
-  const user = window.sessionStorage.getItem("user") ? JSON.parse(window.sessionStorage.getItem("user")) : "";
-
-  
   const logout = () =>{
-    console.log("logout");
     dispatch(Logout())
-    props.history.push("/app")
+    setTimeout(() => {
+      props.history.push("/login")  
+    }, 200);    
   }
   return (
    
@@ -61,7 +60,7 @@ function Head(props) {
 
         <li className="nav-item dropdown">
           <button className="nav-link btn btn-link" aria-expanded="false" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-          {user.imageUrl ? <div><Avatar alt="Remy Sharp" src={user.imageUrl} /> </div> : <i className="material-icons">person</i> }  
+          {user ? <div><Avatar alt="Remy Sharp" src={user.imageUrl} /> </div> : <i className="material-icons">person</i> }  
             <p className="d-lg-none d-md-block">
               Account
             </p>
