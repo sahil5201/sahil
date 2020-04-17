@@ -11,7 +11,7 @@ import ScheduleTask from './Page/ScheduleTask';
 import ErrorPage from './Page/ErrorPage';
 import ProfilePage from "./Page/ProfilePage";
 
-function Mainarea() {
+function Mainarea(props) {
   const link = window.location.pathname
   const customHistory = createBrowserHistory();
   const login = window.sessionStorage.getItem('user') ? window.sessionStorage.getItem('user') : null ;
@@ -34,7 +34,7 @@ function Mainarea() {
                 <Route path="*" component={ErrorPage} /> 
               </Switch> 
                 : 
-                <Route exact path ="/" render={()=>{ window.location = "/sahil/login"; }}></Route>
+                <Route exact path ="/" render={()=>{ props.history.push("/login"); }}></Route>
             }              
           
           </div>

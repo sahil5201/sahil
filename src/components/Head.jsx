@@ -23,7 +23,7 @@ function Head(props) {
   const logout = () =>{
     console.log("logout");
     dispatch(Logout())
-    props.history.push("/")
+    props.history.push("/app")
   }
   return (
    
