@@ -12,6 +12,7 @@ const UserReducer = (state = defaultState, action) => {
             };
         case "Logout":
             window.sessionStorage.setItem("user",JSON.stringify({}))
+            window.sessionStorage.removeItem('user');
             return {
                 ...state,
                 user: null

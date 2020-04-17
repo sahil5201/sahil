@@ -7,7 +7,7 @@ function TodayTask() {
   const task = useSelector((state) => state.Task.task);
   return (
     <div className="row">
-      <Table lg="10" Data={task} currentDate={false} />
+      <Table lg="10" Data={task} currentDate={true} />
     </div>
   );
 }

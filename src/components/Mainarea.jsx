@@ -1,5 +1,5 @@
 import React from "react";
-import {Switch, Route,HashRouter } from "react-router-dom";
+import {Switch, Route,HashRouter, withRouter } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import Head from "./Head";
 import Sidebar from "./Sidebar";
@@ -14,6 +14,7 @@ import ProfilePage from "./Page/ProfilePage";
 function Mainarea() {
   const link = window.location.pathname
   const customHistory = createBrowserHistory();
+  const login = window.sessionStorage.getItem('user') ? window.sessionStorage.getItem('user') : null ;
   return (
     <HashRouter history={customHistory}>
     <div className="wrapper">
@@ -22,15 +23,20 @@ function Mainarea() {
         <Head />
         <div className="content">
           <div className="container-fluid">
-          <Switch>
+          
+            {login ? 
+              <Switch>
                 <Route exact path="/" component={Dashboard} />
                 <Route exact path="/latest" component={TodayTask} />
                 <Route exact path="/important" component={ImportantTask} />
                 <Route exact path="/planned" component={ScheduleTask} />
                 <Route exact path="/profile" component={ProfilePage} />
-                <Route exact path ="/login" render={()=>{ window.location = "/sahil/login"; }}></Route>
-                <Route path="*" component={ErrorPage} />
-          </Switch>
+                <Route path="*" component={ErrorPage} /> 
+              </Switch> 
+                : 
+                <Route exact path ="/" render={()=>{ window.location = "/sahil/login"; }}></Route>
+            }              
+          
           </div>
         </div>
       </div>
@@ -39,4 +45,4 @@ function Mainarea() {
   );
 }
 
-export default Mainarea;
+export default withRouter(Mainarea);

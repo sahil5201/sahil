@@ -1,9 +1,14 @@
 import React from 'react';
 import {Menu,MenuItem, Avatar} from '@material-ui/core';
+import { GoogleLogout } from 'react-google-login';
+import { PUB_Key } from '../redux/const';
+import { useDispatch } from 'react-redux';
+import { Logout } from '../redux/action';
+import { withRouter } from 'react-router';
 
-function Head() {
+function Head(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const dispatch = useDispatch();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -13,6 +18,13 @@ function Head() {
   };
 
   const user = window.sessionStorage.getItem("user") ? JSON.parse(window.sessionStorage.getItem("user")) : "";
+
+  
+  const logout = () =>{
+    console.log("logout");
+    dispatch(Logout())
+    props.history.push("/")
+  }
   return (
    
      <nav className="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
@@ -65,7 +77,17 @@ function Head() {
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <div className="dropdown-divider" />
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+
+        <GoogleLogout
+      clientId={PUB_Key}
+      render={renderProps => (
+        <MenuItem onClick={renderProps.onClick}>Logout</MenuItem>
+      )}
+      buttonText="Logout"
+      onLogoutSuccess={logout}
+    />
+
+        
         </Menu>
         </li>
 
@@ -78,4 +100,4 @@ function Head() {
   );
 }
 
-export default Head;
+export default withRouter(Head);

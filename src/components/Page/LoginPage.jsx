@@ -1,28 +1,29 @@
 import React from 'react'
-import { GoogleLogin,GoogleLogout } from 'react-google-login';
+import { GoogleLogin } from 'react-google-login';
 import { useSelector, useDispatch } from 'react-redux';
-import { Login, Logout } from '../../redux/action/UserAction';
-
-function LoginPage() {
+import { Login } from '../../redux/action/UserAction';
+import { PUB_Key } from '../../redux/const';
+import {
+  withRouter
+} from 'react-router-dom'
+function LoginPage(props) {
 
   const user = useSelector((state)=>state.User);
   
   const dispatch = useDispatch();
   console.log(user);
-
+  // console.log(props.history.push("/"));
   const responseGoogle = (response) => {
-    console.log(response);
-    dispatch(Login(response.profileObj))
-  }
-
-  const logout = () =>{
-    console.log("logout");
-    dispatch(Logout())
+    console.log(response); 
+    if(response.googleId){
+      dispatch(Login(response.profileObj))
+      props.history.push("/app/")
+    }
   }
     return (
       <div className="Login-container">
       <GoogleLogin
-    clientId="62144225234-aasn2udkh8gkfj30jbo5nipcopg74pem.apps.googleusercontent.com"
+    clientId={PUB_Key}
     buttonText="Login With Google"
     onSuccess={responseGoogle}
     onFailure={responseGoogle}
@@ -30,14 +31,8 @@ function LoginPage() {
     isSignedIn={true}
     />
 
-    <GoogleLogout
-      clientId="62144225234-aasn2udkh8gkfj30jbo5nipcopg74pem.apps.googleusercontent.com"
-      buttonText="Logout"
-      onLogoutSuccess={logout}
-    >
-    </GoogleLogout>
     </div>
     )
 }
 
-export default LoginPage
+export default withRouter(LoginPage)
