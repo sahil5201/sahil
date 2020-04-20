@@ -17,7 +17,7 @@ function Table(props) {
   const user = useSelector((state) => state.User.user);
   const id = { id: user ? user.googleId : null }
   useEffect(() => {
-    dispatch(fetchData("task/byid/",id));
+    dispatch(fetchData("task/",id));
   }, []);
 
   return (
