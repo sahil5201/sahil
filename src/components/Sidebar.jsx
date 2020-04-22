@@ -41,6 +41,12 @@ function Sidebar(props) {
           <p>planned</p>
         </Link>
       </li>
+      <li className={ link === "/important" ? "nav-item active" : "nav-item " }>
+        <Link className="nav-link" to="/team">
+          <i className="material-icons">group</i>
+          <p>Team</p>
+         </Link>
+      </li>
       {user ?
       <li className="nav-item active-pro">
         <Link className="nav-link" to="/profile">

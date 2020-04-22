@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchData } from '../../redux/action/TaskAction';
+import { fetchData } from '../../redux/';
 import BigCalendar from '../UI/BigCalendar';
 
 function ScheduleTask() {
-    const task = useSelector((state) => state.Task.task);
+    const task = useSelector((state) => state.Schedule.task);
     const dispatch = useDispatch();
 
   useEffect(() => {

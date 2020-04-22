@@ -3,21 +3,21 @@ import React from 'react'
 function ProfilePage() {
     const user = window.sessionStorage.getItem("user") ? JSON.parse(window.sessionStorage.getItem("user")) : "";
     return (
-        <div class="row justify-content-md-center">
-            <div class="col-md-6">
-              <div class="card card-profile">
-                <div class="card-avatar">
-                  <a href="javascript:;">
-                    <img class="img" src={user.imageUrl} />
+        <div className="row justify-content-md-center">
+            <div className="col-md-6">
+              <div className="card card-profile">
+                <div className="card-avatar">
+                  <a href="/">
+                    <img className="img" src={user.imageUrl} alt=""/>
                   </a>
                 </div>
-                <div class="card-body">
-                  <h6 class="card-category text-gray"> Designation  </h6>
-                  <h4 class="card-title">{user.name}</h4>
-                  <p class="card-description">
+                <div className="card-body">
+                  <h6 className="card-category text-gray"> Designation  </h6>
+                  <h4 className="card-title">{user.name}</h4>
+                  <p className="card-description">
                     Description
                   </p>
-                  <a href="javascript:;" class="btn btn-success btn-round">Follow</a>
+                  <a href="/" className="btn btn-success btn-round">Follow</a>
                 </div>
               </div>
             </div>

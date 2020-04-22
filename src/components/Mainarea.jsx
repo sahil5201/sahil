@@ -4,14 +4,16 @@ import { createBrowserHistory } from "history";
 import Head from "./Head";
 import Sidebar from "./Sidebar";
 
+import { user_authentication } from "../redux/action";
+import { useDispatch } from "react-redux";
+
 import Dashboard from "./Page/Dashboard";
 import TodayTask from './Page/TodayTask';
 import ImportantTask from './Page/ImportantTask';
 import ScheduleTask from './Page/ScheduleTask';
 import ErrorPage from './Page/ErrorPage';
 import ProfilePage from "./Page/ProfilePage";
-import { user_authentication } from "../redux/action";
-import { useDispatch } from "react-redux";
+import Team from "./Page/Team";
 
 function Mainarea(props) {
    const dispatch = useDispatch()
@@ -37,6 +39,7 @@ function Mainarea(props) {
                 <Route exact path="/important" component={ImportantTask} />
                 <Route exact path="/planned" component={ScheduleTask} />
                 <Route exact path="/profile" component={ProfilePage} />
+                <Route exact path="/team" component={Team} />
                 <Route path="*" component={ErrorPage} /> 
               </Switch> 
                 : 

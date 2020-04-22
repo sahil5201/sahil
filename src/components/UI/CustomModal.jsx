@@ -8,7 +8,7 @@ import {
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import { useDispatch, useSelector } from "react-redux";
-import { insertData, deleteData } from "../../redux/action/TaskAction";
+import { insertData, deleteData } from "../../redux/";
 import Moment from "moment";
 
 
@@ -60,7 +60,7 @@ export function ScheduleModal(props) {
   const [memoColor, setmemoColor] = React.useState("");
   const user = useSelector((state) => state.User.user);
   const dispatch = useDispatch();
-
+  let i =0;
  const onFormChange=(event)=>{
     setTask(event.target.value);
   }
@@ -164,12 +164,12 @@ export function ScheduleModal(props) {
   <div className="well well-sm text-center">
     <div className="btn-group colorPicker" data-toggle="buttons">
      { 
-     colorList.map((item) => { 
+     colorList.map((item) => { i++;
         return (
-        <label className={ memoColor===item ? "btn active" : "btn" } id={item} style={{ backgroundColor:item }}>
-        <input type="radio" name={item} autoComplete="off" id={item} onClick={oncolorSelect}/>
+        <label className={ memoColor===item ? "btn active" : "btn" } key={i} style={{ backgroundColor:item }}>
+        <input type="radio" name={item} autoComplete="off" key={item} onClick={oncolorSelect}/>
         <span className="material-icons">check</span>
-      </label>
+        </label>
       )
         })}
     </div>

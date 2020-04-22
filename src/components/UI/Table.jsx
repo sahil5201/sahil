@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { Checkbox,CircularProgress } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
-import { Check, fetchData } from "../../redux/action";
+import { Check } from "../../redux/action";
+import {fetchData } from "../../redux/";
 import Moment from "moment";
 import CustomModal from "./CustomModal";
 import { DeletePopup } from "./DeletePopup";

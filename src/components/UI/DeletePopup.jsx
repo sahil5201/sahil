@@ -3,7 +3,7 @@ import { Modal } from "react-bootstrap";
 import Moment from "moment";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { deleteData } from "../../redux/action";
+import { deleteData } from "../../redux/";
 
 export function DeletePopup(props) {
   const dispatch = useDispatch()
