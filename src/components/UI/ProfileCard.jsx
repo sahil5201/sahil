@@ -6,7 +6,7 @@ function ProfileCard(props) {
     const description = props.Description ? props.Description : "Description Hear";
     const designation = props.Designation ? props.Designation : "Designation Hear";
     return (
-      <div className="col-md-3">
+      <div className="col-md-3 mt-4">
         <div className="card card-profile">
           <div className="card-avatar">
             <a href="/">
