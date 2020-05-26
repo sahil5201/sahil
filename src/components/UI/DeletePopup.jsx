@@ -1,15 +1,12 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
-import Moment from "moment";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { deleteData } from "../../redux/";
 
 export function DeletePopup(props) {
   const dispatch = useDispatch()
-  const TaskDate =  props.data ? Moment(props.data.task.Date).format("DD-MM-YYYY") : "";
-  const TaskTime =  props.data ? Moment(props.data.task.Date).format("hh:mm A") : "";
- 
+  
   const onDelete = () =>{
     const DataId={"id":props.data.id}
     dispatch(deleteData('task/deletetask',DataId,'task'))
@@ -29,9 +26,7 @@ export function DeletePopup(props) {
        
          { props.data ? 
          <div className="row">
-         <div className="col-md-6"> {props.data.task.Task} </div>
-         <div className="col-md-3"> {TaskDate} </div>
-         <div className="col-md-3"> {TaskTime} </div>
+         <div className="col-md-8"> Do you want to delete this Task : <b> {props.data.data.Task} </b> </div>
          </div>
          : " " }
       

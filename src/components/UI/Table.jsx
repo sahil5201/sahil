@@ -9,7 +9,7 @@ import { DeletePopup } from "./DeletePopup";
 
 function Table(props) {
   const lg = "col-lg-" + props.lg;
-  const data = props.Data;
+  const data = props.Data ?  props.Data : null ;
   const dispatch = useDispatch();
   const currentDate = props.currentDate ? true : false;
   const [modalShow, setModalShow] = React.useState(false);
@@ -17,10 +17,10 @@ function Table(props) {
   const [itemdata, setData] = React.useState(null);
   const user = useSelector((state) => state.User.user);
   const id = { id: user ? user.googleId : null }
+  let isLoading = useSelector((state)=>state.Task.loading)
   useEffect(() => {
     dispatch(fetchData("task/",id));
   }, []);
-
   return (
     <div className="row justify-content-lg-center col-lg-12">
       <CustomModal show={modalShow} onHide={() => setModalShow(false)} />
@@ -52,18 +52,24 @@ function Table(props) {
               <div className="tab-pane active" id="profile">
                 <table className="table">
                   <tbody>
-                    {data ? (
+                  { isLoading ? <tr>
+                        <td colSpan="5" style={{ textAlign: "center" }}>
+                          <CircularProgress />
+                        </td>
+                      </tr> :
+                     
+                     data ? (
                       data.map((item) => {
                         if (
                           currentDate
-                            ? Moment(item.task.Date).format("DD-MM-YYYY") ===
+                            ? Moment(item.data.Date).format("DD-MM-YYYY") ===
                               Moment().format("DD-MM-YYYY")
                             : true
                         ) {
-                          const TaskDate = Moment(item.task.Date).format(
+                          const TaskDate = Moment(item.data.Date).format(
                             "DD-MM-YYYY"
                           );
-                          const TaskTime = Moment(item.task.Date).format(
+                          const TaskTime = Moment(item.data.Date).format(
                             "hh:mm A"
                           );
                           return (
@@ -75,7 +81,7 @@ function Table(props) {
                                   onChange={() => dispatch(Check())}
                                 />
                               </td>
-                              <td> {item.task.Task} </td>
+                              <td> {item.data.Task} </td>
                               <td> {TaskDate} </td>
                               <td> {TaskTime} </td>
                               <td className="td-actions text-right">
@@ -105,13 +111,13 @@ function Table(props) {
                           );
                         }
                       })
-                    ) : (
-                      <tr>
-                        <td colSpan="5" style={{ textAlign: "center" }}>
-                          <CircularProgress />
-                        </td>
-                      </tr>
-                    ) }
+                    ) : 
+                    (<tr>
+                    <td colSpan="5" style={{ textAlign: "center" }}>
+                      <h3>Start Your Day</h3>
+                    </td>
+                    </tr>)                      
+                      }
                      
                   </tbody>
                 </table>

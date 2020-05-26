@@ -18,10 +18,10 @@ function ScheduleTask() {
     task.map((item) => { 
         myEventsList.push({
             id: item.id,
-            title: item.task.Task,
-            color: item.task.color ? item.task.color : "",
-            start: new Date(item.task.startDate),
-            end: new Date(item.task.endDate),
+            title: item.data.Task,
+            color: item.data.color ? item.data.color : "",
+            start: new Date(item.data.startDate),
+            end: new Date(item.data.endDate),
         }) 
     })) : "";
 

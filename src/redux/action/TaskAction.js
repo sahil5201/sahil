@@ -5,26 +5,8 @@ export const GET = data => {
     }
 }
 
-export const insert = () => {
+export const LOADING = () => {
     return {
-        type: 'INSERT',
-    }
-}
-
-export const update = () => {
-    return {
-        type: 'UPDATE',
-    }
-}
-
-export const Delete = () => {
-    return {
-        type: 'DELETE',
-    }
-}
-
-export const Check = () => {
-    return {
-        type: 'Check',
+        type: 'LOADING'
     }
 }

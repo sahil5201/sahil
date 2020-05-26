@@ -14,6 +14,8 @@ function ProfilePage() {
                 <div className="card-body">
                   <h6 className="card-category text-gray"> Designation  </h6>
                   <h4 className="card-title">{user.name}</h4>
+                  <h5 className="card-title">{user.googleId}</h5>
+                  <h5 className="card-title">{user.email}</h5>
                   <p className="card-description">
                     Description
                   </p>

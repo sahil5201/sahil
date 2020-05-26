@@ -20,13 +20,11 @@ export default function CustomModal(props) {
  const onFormChange=(event)=>{
     setTask(event.target.value);
   }
-
   const onFormSubmit=()=>{
     const TaskData = {
       Task:Task,
       userID: user.googleId
     }
-    console.log(user,TaskData);
     dispatch(insertData("task/addtask",TaskData));
     props.onHide()    
   }
@@ -79,7 +77,6 @@ export function ScheduleModal(props) {
   }
 
   const onFormSubmit=()=>{
-    console.log(Task,StartDate,EndDate);
     const TaskData = {
       Task:Task,
       startDate:StartDate,
